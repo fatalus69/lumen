@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('lumen.core.layout.app')
 
 <form method="POST" action="{{ route('auth.login') }}">
     @csrf
