@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\BackendController;
+use App\Http\Controllers\Lumen\Core\AuthController;
+use App\Http\Controllers\Lumen\Core\BackendController;
 
 // Route::get('/login', function () {
 //     return view('lumen.core.auth.login');

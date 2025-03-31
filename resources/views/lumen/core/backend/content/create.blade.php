@@ -1,18 +1,30 @@
 @extends('lumen.core.layout.app')
 @section('title', 'Create Post')
 @section('content')
-    <h1>Create a new Post</h1>
-    <form method="POST" action="{{ route('backend.content.store') }}">
+    <h1 class="lumen-primary-header">Create a new Post</h1>
+    <a href="{{ route('backend.content.index') }}" class="lumen-link">Back to Posts</a>
+    <form method="POST" action="{{ route('backend.content.store') }}" class="flex-col">
         @csrf
-        <div>
-            <label for="title">Title:</label>
-            <input type="text" id="title" name="title" required>
+        <div class="lumen-flex-col">
+            <label for="title">Title:
+                <span class="lumen-required-text">*</span>
+            </label>
+            <input type="text" class="lumen-node-textinput" name="title" required>
+        </div class="lumen-flex-col">
+        <div class="lumen-flex-col">
+            <label for="slug">Slug:</label>
+            <input type="text" class="lumen-node-textinput" name="slug">
         </div>
-        <div>
-            <label for="content">Content:</label>
-            <textarea id="content" name="content" required></textarea>
+        <div class="lumen-flex-col">
+            <label for="content">Content:
+                <span class="lumen-required-text">*</span>
+            </label>
+            <textarea class="lumen-node-textarea" name="content"></textarea>
         </div>
-        <button type="submit">Create Post</button>
+        <div class="lumen-flex-row">
+            <input type="checkbox" name="active" class="lumen-node-checkbox">
+            <label for="active">Publish</label>
+        </div>
+        <button class="lumen-save-btn" type="submit">Create Post</button>
     </form>
-    <a href="{{ route('backend.content.index') }}">Back to Posts</a>
 @endsection

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Lumen\Core;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Node;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Lumen\Core\StoreNodeRequest;
 
 class BackendController extends Controller
 {
@@ -37,17 +39,17 @@ class BackendController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreNodeRequest $request)
     {
-        $post = new Node();
+        $node = new Node();
         //todo: validate $request
-        $post->title = $request->input('title');
-        $post->slug = $request->input('slug');
-        $post->content = $request->input('content');
-        $post->active = $request->input('active', true);
-        $post->author = Auth::id();
+        $node->title = $request->input('title');
+        $node->slug = $request->input('slug');
+        $node->content = $request->input('content');
+        $node->active = $request->input('active', true);
+        $node->author = Auth::id();
 
-        $post->save();
+        $node->save();
 
         return redirect()->route('backend.content.index');
     }
